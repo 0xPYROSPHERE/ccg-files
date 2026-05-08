@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
+	<base href="https://cdn.jsdelivr.net/gh/0xPYROSPHERE/coolchemgames@main/granny/2/">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<base href="https://cdn.jsdelivr.net/gh/0xPYROSPHERE/coolchemgames@main/granny/">
 	<link rel="stylesheet" href="theme/game.css">
-	<style type="text/css">@font-face {font-family:Fredoka;font-style:normal;font-weight:400;src:url(cf-fonts/v/fredoka/5.0.11/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Fredoka;font-style:normal;font-weight:400;src:url(cf-fonts/v/fredoka/5.0.11/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Fredoka;font-style:normal;font-weight:400;src:url(cf-fonts/v/fredoka/5.0.11/hebrew/wght/normal.woff2);unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F;font-display:swap;}@font-face {font-family:Fredoka;font-style:normal;font-weight:500;src:url(cf-fonts/v/fredoka/5.0.11/hebrew/wght/normal.woff2);unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F;font-display:swap;}@font-face {font-family:Fredoka;font-style:normal;font-weight:500;src:url(cf-fonts/v/fredoka/5.0.11/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Fredoka;font-style:normal;font-weight:500;src:url(cf-fonts/v/fredoka/5.0.11/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
-	<title>Granny Horror</title>
-	<meta name="description" content="Enter the terrifying house of Granny Horror and fight for your survival! Stay silent, solve puzzles, and escape before Granny finds you."/>
+	<meta name="robots" content="noindex, nofollow">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&display=swap" rel="stylesheet">
+	<title>Granny Horror 2</title>
+	<meta name="description" content=""/>
 	<style type="text/css">
 		.jss1:before {
 			top: 0;
@@ -20,50 +21,38 @@
 			z-index: 0;
 			position: absolute;
 			background-size: cover;
-			background-image: url("loading.png")
+			background-image: url("granny2.png")
 		}
 	</style> 
 	<script>
 		window.fileMergerConfig = {
 			files: [
-				{name: "granny-horror-v25022801.data.unityweb", parts: 3},
-				{name: "granny-horror-v25022801.wasm.unityweb", parts: 2}
+				{name: "granny-horror-2-v25022704.data.unityweb", parts: 2}
 			],
 			basePath: "Build/",
-			debug: true
+			debug: false
 		};
 	</script>
 	<script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@ac5cdfc0042aca584e72619375b4aca948a9243c/merge.js"></script>
-	 
 	<script>
 		var buildUrl = "Build";
 		var versionFolder = "";
-		var cdnParam = new URLSearchParams(window.location.search).get("cdn");
-                            if (!cdnParam && window.location.hostname.includes(".")) {
-                            var parts = window.location.hostname.split(".");
-                            if (parts.length > 2) {
-                                cdnParam = "2";
-                            }
-                        }
-var baseUrl = "https://cdn.jsdelivr.net/gh/0xPYROSPHERE/coolchemgames@main/granny/"
-buildUrl = baseUrl + versionFolder + buildUrl;
-		var loaderUrl = buildUrl + "/granny-horror-v25022801.loader2.js";
+		var loaderUrl = buildUrl + "/granny-horror-2-v25022704.loader2.js";
 		var config = {
-			dataUrl: buildUrl + "/granny-horror-v25022801.data.unityweb",
-			frameworkUrl: buildUrl + "/granny-horror-v25022801.framework.js.unityweb",
-			codeUrl: buildUrl + "/granny-horror-v25022801.wasm.unityweb",
+			dataUrl: buildUrl + "/granny-horror-2-v25022704.data.unityweb",
+			frameworkUrl: buildUrl + "/granny-horror-2-v25022704.framework.js.unityweb",
+			codeUrl: buildUrl + "/granny-horror-2-v25022704.wasm.unityweb",
 			streamingAssetsUrl: versionFolder+"StreamingAssets",
-			companyName: "1games.io",
-			productName: "Granny Horror",
-			productVersion: "25022801",
+			companyName: "azgames.io",
+			productName: "Granny Horror 2",
+			productVersion: "25022704",
 			pubId: ""
 		};
-		config.hostindex = 2;
-		config.gameId = "granny-horror";
+		config.gameId = "granny-horror-2";
 		config.eventLog=true;
 		config.buildAPI = "https://event.azgame.io/apiaz/event";
 		let currentDate = new Date();
-		let endLogDate = new Date("2025-03-19T03:16:16.284Z");
+		let endLogDate = new Date("2025-03-24T07:01:55.308Z");
 		if(currentDate>endLogDate){
 			config.eventLog=false;
 		}
@@ -92,29 +81,29 @@ buildUrl = baseUrl + versionFolder + buildUrl;
 </div>
 <div id="loadingBlock" style="">
 	<div class="jss31 jss34 jss1">
-	<div style="position: absolute; font-family: Arial, Helvetica, sans-serif;	bottom: 10px; right: 10px; font-size: 18px; color: #ffffff; opacity: 0.5;">25022801</div>
+	<div style="position: absolute; font-family: Arial, Helvetica, sans-serif;	bottom: 10px; right: 10px; font-size: 18px; color: #ffffff; opacity: 0.5;">25022704</div>
 		<div class="spinner"></div>
 		<div class="jss31 jss34 jss48" style="flex: 1 1 0%;">
 			<div class="jss32">
 				<div class="jss7 jss9 jss20 jss3">
 					<div class="jss125">
 						<div class="jss123">
-						 <img src="https://cdn.jsdelivr.net/gh/0xPYROSPHERE/coolchemgames@main/images/icons/logo.png" style="width:200px;height:150px;">
+						 <img src="../../images/icons/logo.png" style="width: 200px;height:150px;">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!--PRODUCT_VERSION:25022801END-->
+		<!--PRODUCT_VERSION:25022704END-->
 		<div class="jss31 jss34" style="flex: 3 1 0%;">
 			<div class="jss32">
 				<div class="jss31 jss34 jss39 jss50 gameloader">
 					<div class="jss32">
-						<div class="gameloader-game-name">Granny Horror</div>
+						<div class="gameloader-game-name">Granny Horror 2</div>
 					</div>
 					<div class="jss32">
 						<div class="jss32 gameloader-logo">
-							<img id="game-logo" src="loading.png">
+							<img id="game-logo" src="granny2.png">
 						</div>
 					</div>
 					<div class="jss32">
@@ -174,6 +163,7 @@ buildUrl = baseUrl + versionFolder + buildUrl;
 			return;
 		}
 	</script>
+	
 </body>	
 </html>
 
