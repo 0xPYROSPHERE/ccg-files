@@ -1,0 +1,116 @@
+
+<html>
+  <head>
+    <title>Angry Birds Chrome</title>
+    <base href="https://cdn.jsdelivr.net/gh/angrybirds-s4uk/angrybirdschrome-source-html5@main/">
+    <meta name="Title" content="Angry Birds Chrome">
+    <meta name="description" content="Play Angry Birds online in HD with Google Chrome">
+    <meta name="keywords" content="angry birds, free angry birds, online game, play online, angry birds app, chrome, google chrome, web browser, HD, arcade game, online, play angry birds online, web, application, game, iphone, android, ipad, slingshot, catapult, explosions, golden egg, levels, pigs, birds, stars, high scores, chrome os, chrome web store, angry birds rovio, play angry birds on computer, apps for chrome, play angry birds free">
+    <link href='https://fonts.googleapis.com/css?family=Terminal+Dosis:800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/angry_birds_chrome.css" type="text/css">
+
+
+    
+      <script type="text/javascript" src="fowl/fowl.nocache.js"></script>
+  </head>
+  <body>
+    
+
+    
+
+    
+      <script type="text/javascript">
+        function getFlashVersion() {
+            try {
+                var version;
+                try {
+                    version = new ActiveXObject("ShockwaveFlash.ShockwaveFlash").GetVariable("$version");
+                } catch (e) {
+                    version = navigator.plugins["Shockwave Flash"].description;
+                }
+                return version.replace(/\D*(\d+).*/g, "$1");
+            } catch (e) {
+                return -1;
+            }
+        }
+
+        function haveAudioSupport() {
+          
+            try {
+              if (new AudioContext()) {
+                return true;
+              }
+            } catch (ignore) { }
+
+            try {
+              if (new webkitAudioContext()) {
+                return true;
+              }
+            } catch (ignore) { }
+
+            return getFlashVersion() >= 9.0;
+          
+        }
+      </script>
+    
+  
+    
+    
+    
+    
+    
+
+      <script type="text/javascript">
+        if (!haveAudioSupport()) {
+          url = window.location.href;
+
+          base = url.match(/[^?#]*/);
+          query = url.match(/\?[^#]*/) || "";
+          hash = url.match(/#.*/);
+
+          query = query.toString().replace(/[?&]$/, "");
+          query = query ? query + "&" : "?";
+          query += "show=need_flash";
+
+          url = base + query;
+          if (hash) url += hash;
+
+          window.location.href = url;
+        }
+      </script>
+
+      
+
+          <table class="content-table">
+            <tr>
+              <td>
+
+          <div class="gamecont" id="content">
+            <div id='loginInfo'></div>
+            
+            <div id='gameDiv' style="display: inline-block;">
+              <div id='playn-root'>
+                <div id="loading">
+                  <img src="images/loading_image_bird.png" />
+                </div>
+              </div>
+              <div id="rovionews"></div>
+              <div id="videochapter"></div>              
+              <div id="ingameframecontainer"></div>
+              <div id="cornerframecontainer1"></div>
+            </div>
+
+            </td>
+            </td>
+            </tr>
+          </table>
+
+    <noscript>
+      <div class="info-noscript">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+
+  </body>
+</html>
