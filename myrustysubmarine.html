@@ -12,15 +12,27 @@
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/MyRustySubmarineWebGL.json", { onProgress: UnityProgress });
     </script>
+    <style>
+      body,
+      html {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          width: 100%;
+          overflow: hidden;
+      }
+
+      .webgl-content, #unityContainer {
+          position: absolute;
+          width: 100vw;
+          height: 100vh;
+          border: none;
+      }
+    </style>
   </head>
   <body>
     <div class="webgl-content">
-      <div id="unityContainer" style="width: 1024px; height: 600px;"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">My Rusty Submarine</div>
-      </div>
+      <div id="unityContainer"></div>
     </div>
   </body>
 </html>
