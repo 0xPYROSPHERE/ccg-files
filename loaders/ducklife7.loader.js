@@ -68,7 +68,6 @@ function createUnityInstance(n, t, d) {
     e(t, "productVersion", "1.0"),
     t)
         p[o] = t[o];
-    p.streamingAssetsUrl = new URL(p.streamingAssetsUrl).href;
     var i = p.disabledCanvasEvents.slice();
 
     function s(e) {
