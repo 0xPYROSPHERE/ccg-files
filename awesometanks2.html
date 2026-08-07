@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Awesome Tanks</title>
+        <base href="https://cdn.jsdelivr.net/gh/0xPYROSPHERE/tanks-ccg@557b58eb5b997964c426b70ba613f89ff2534217/2/">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+        <link href="styles/main.css" rel="stylesheet">
+        <link href="styles/fonts.css" rel="stylesheet">
+        <meta name="apple-mobile-web-app-title" content="Awesome Tanks">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>    
+        <script>
+            let wasMuted = false;
+            // To trigger the event Listener adBreakStart
+            document.addEventListener("adBreakStart", () => {
+                console.log("AdBreak Started");		
+            });
+            // To trigger the event Listener  adBreakComplete
+            document.addEventListener("adBreakComplete", () => {
+                console.log("adBreak Complete");
+            });
+            
+            function cmgAdBreakCall() {
+                return;
+            }
+        </script>
+
+        <p style="font-family: 'Gunplay'; position: absolute; pointer-events: none; opacity: 0">Font loader</p>
+        <script>
+            var AT = {};
+
+            var WebFontConfig = {
+                'classes': false,
+                'timeout': 0,
+                'active': function() {},
+                'custom': {'families': ['Gunplay'], 'urls': ['styles/fonts.css']}
+            };
+        </script>
+        <script src="awesome_tanks_2.min.js"></script>
+    </body>
+</html>

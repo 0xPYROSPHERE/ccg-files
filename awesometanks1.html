@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Awesome Tanks</title>
+        <base href="https://cdn.jsdelivr.net/gh/0xPYROSPHERE/tanks-ccg@fb73853503989d503ee8e9c63274c3adb65c4a7c/1/">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+        <link href="styles/main.css" rel="stylesheet">
+        <meta name="apple-mobile-web-app-title" content="Awesome Tanks">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    </head>
+    <body>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>    
+        <script>
+            let wasMuted = false;
+            // To trigger the event Listener adBreakStart
+            document.addEventListener("adBreakStart", () => {
+                console.log("AdBreak Started");
+            });
+            // To trigger the event Listener  adBreakComplete
+            document.addEventListener("adBreakComplete", () => {
+                console.log("adBreak Complete");
+            });
+            
+            function cmgAdBreakCall() {
+                return;
+            }
+
+            window.AT = {};
+        </script>
+
+        <script>
+            var WebFontConfig = {
+                'classes': false,
+                'timeout': 0,
+                'active': function() {},
+                'custom': {'families': ['Gunplay'], 'urls': ['styles/fonts.css']}
+            };
+        </script>
+        <script src="awesome_tanks.min.js"></script>
+    </body>
+</html>
