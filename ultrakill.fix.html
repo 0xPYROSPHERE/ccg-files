@@ -1,12 +1,6 @@
-<!-- Ultimate Game Stash file--> 
-<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
-<!-- Made by bread for gn-math -->
-
-
 <html lang="en-us">
 
 <head>
-    <base href="https://cdn.jsdelivr.net/gh/NesquikStrawberry/web-port@master/ultrakill/">
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>ULTRAKILL</title>
@@ -20,7 +14,7 @@
             width: 100%;
         }
 
-        #unity-container {
+        iframe {
             width: 100%;
             height: 100%;
             position: fixed;
@@ -31,79 +25,7 @@
 </head>
 
 <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <div id='loading-text' style="color: black; font-family: cursive; font-size: 48px; text-align: center; margin-top: 20px;">LOADING...</div>
-    <canvas id="unity-canvas" tabindex="-1" hidden></canvas>
-    <script src="https://cdn.jsdelivr.net/gh/0xPYROSPHERE/coolchemgames@main/ultrakill/ultrakill.loader.js"></script>
-    <script>
-        var canvas = document.querySelector("#unity-canvas");
-        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            // Mobile device style: fill the whole browser client area with the game canvas:
-            var meta = document.createElement('meta');
-            meta.name = 'viewport';
-            meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-            document.getElementsByTagName('head')[0].appendChild(meta);
-            canvas.style.width = "100%";
-            canvas.style.height = "100%";
-            canvas.style.position = "fixed";
-            document.body.style.textAlign = "left";
-        } else {
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                canvas.style.width = window.innerWidth + "px";
-                canvas.style.height = window.innerHeight + "px";
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-        }
-
-        function mergeFiles(fileParts) {
-            return new Promise((resolve, reject) => {
-                let buffers = [];
-
-                function fetchPart(index) {
-                    if (index >= fileParts.length) {
-                        let mergedBlob = new Blob(buffers);
-                        let mergedFileUrl = URL.createObjectURL(mergedBlob);
-                        resolve(mergedFileUrl);
-                        return;
-                    }
-                    fetch(fileParts[index]).then((response) => response.arrayBuffer()).then((data) => {
-                        buffers.push(data);
-                        fetchPart(index + 1);
-                    }).catch(reject);
-                }
-                fetchPart(0);
-            });
-        }
-
-        function getParts(file, start, end) {
-            let parts = [];
-            for (let i = start; i <= end; i++) {
-                parts.push(file + ".part" + i);
-            }
-            return parts;
-        }
-        Promise.all([
-            mergeFiles(getParts("Build/ultrakill.data.unityweb", 1, 4)),
-            mergeFiles(getParts("Build/ultrakill.wasm.unityweb", 1, 2))
-        ]).then(([dataUrl, wasmurl]) => {
-            document.querySelector("#unity-canvas").hidden = false;
-            createUnityInstance(document.querySelector("#unity-canvas"), {
-                dataUrl: dataUrl,
-                frameworkUrl: "https://cdn.jsdelivr.net/gh/NesquikStrawberry/web-port@master/ultrakill/Build/ultrakill.framework.js.unityweb",
-                codeUrl: wasmurl,
-                streamingAssetsUrl: "https://cdn.jsdelivr.net/gh/NesquikStrawberry/web-port@master/ultrakill/StreamingAssets",
-                companyName: "Hakita and Cake Logic",
-                productName: "ULTRAKILL",
-                productVersion: "1.4",
-                // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-                // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-            }).then((e) => {
-                document.querySelector("#loading-text").remove();
-            });
-        });
-    </script>
+    <iframe id="container" src="data:text/html;base64,PCEtLSBVbHRpbWF0ZSBHYW1lIFN0YXNoIGZpbGUtLT4gDQo8IS0tIEZvciB0aGUgcmVndWxhcmx5IHVwZGF0aW5nIGRvYyBnbyB0byBodHRwczovL2RvY3MuZ29vZ2xlLmNvbS9kb2N1bWVudC9kLzFfRm1IM0JsU0JRSTdGR2dBUUw1OS1aUGU4ZUN4czM1d2VsNkpVeVZhRzhRLyAtLT4NCjwhLS0gTWFkZSBieSBicmVhZCBmb3IgZ24tbWF0aCAtLT4NCg0KDQo8aHRtbCBsYW5nPSJlbi11cyI+DQoNCjxoZWFkPg0KICAgIDxiYXNlIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9OZXNxdWlrU3RyYXdiZXJyeS93ZWItcG9ydEBtYXN0ZXIvdWx0cmFraWxsLyI+DQogICAgPG1ldGEgY2hhcnNldD0idXRmLTgiPg0KICAgIDxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCiAgICA8dGl0bGU+VUxUUkFLSUxMPC90aXRsZT4NCiAgICA8c3R5bGU+DQogICAgICAgIGh0bWwsDQogICAgICAgIGJvZHkgew0KICAgICAgICAgICAgbWFyZ2luOiAwOw0KICAgICAgICAgICAgcGFkZGluZzogMDsNCiAgICAgICAgICAgIG92ZXJmbG93OiBoaWRkZW47DQogICAgICAgICAgICBoZWlnaHQ6IDEwMCU7DQogICAgICAgICAgICB3aWR0aDogMTAwJTsNCiAgICAgICAgfQ0KDQogICAgICAgICN1bml0eS1jb250YWluZXIgew0KICAgICAgICAgICAgd2lkdGg6IDEwMCU7DQogICAgICAgICAgICBoZWlnaHQ6IDEwMCU7DQogICAgICAgICAgICBwb3NpdGlvbjogZml4ZWQ7DQogICAgICAgICAgICB0b3A6IDA7DQogICAgICAgICAgICBsZWZ0OiAwOw0KICAgICAgICB9DQogICAgPC9zdHlsZT4NCjwvaGVhZD4NCg0KPGJvZHkgc3R5bGU9InRleHQtYWxpZ246IGNlbnRlcjsgcGFkZGluZzogMDsgYm9yZGVyOiAwOyBtYXJnaW46IDA7Ij4NCiAgICA8ZGl2IGlkPSdsb2FkaW5nLXRleHQnIHN0eWxlPSJjb2xvcjogYmxhY2s7IGZvbnQtZmFtaWx5OiBjdXJzaXZlOyBmb250LXNpemU6IDQ4cHg7IHRleHQtYWxpZ246IGNlbnRlcjsgbWFyZ2luLXRvcDogMjBweDsiPkxPQURJTkcuLi48L2Rpdj4NCiAgICA8Y2FudmFzIGlkPSJ1bml0eS1jYW52YXMiIHRhYmluZGV4PSItMSIgaGlkZGVuPjwvY2FudmFzPg0KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvZ2gvMHhQWVJPU1BIRVJFL2Nvb2xjaGVtZ2FtZXNAbWFpbi91bHRyYWtpbGwvdWx0cmFraWxsLmxvYWRlci5qcyI+PC9zY3JpcHQ+DQogICAgPHNjcmlwdD4NCiAgICAgICAgdmFyIGNhbnZhcyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoIiN1bml0eS1jYW52YXMiKTsNCiAgICAgICAgaWYgKC9pUGhvbmV8aVBhZHxpUG9kfEFuZHJvaWQvaS50ZXN0KG5hdmlnYXRvci51c2VyQWdlbnQpKSB7DQogICAgICAgICAgICAvLyBNb2JpbGUgZGV2aWNlIHN0eWxlOiBmaWxsIHRoZSB3aG9sZSBicm93c2VyIGNsaWVudCBhcmVhIHdpdGggdGhlIGdhbWUgY2FudmFzOg0KICAgICAgICAgICAgdmFyIG1ldGEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdtZXRhJyk7DQogICAgICAgICAgICBtZXRhLm5hbWUgPSAndmlld3BvcnQnOw0KICAgICAgICAgICAgbWV0YS5jb250ZW50ID0gJ3dpZHRoPWRldmljZS13aWR0aCwgaGVpZ2h0PWRldmljZS1oZWlnaHQsIGluaXRpYWwtc2NhbGU9MS4wLCB1c2VyLXNjYWxhYmxlPW5vLCBzaHJpbmstdG8tZml0PXllcyc7DQogICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50c0J5VGFnTmFtZSgnaGVhZCcpWzBdLmFwcGVuZENoaWxkKG1ldGEpOw0KICAgICAgICAgICAgY2FudmFzLnN0eWxlLndpZHRoID0gIjEwMCUiOw0KICAgICAgICAgICAgY2FudmFzLnN0eWxlLmhlaWdodCA9ICIxMDAlIjsNCiAgICAgICAgICAgIGNhbnZhcy5zdHlsZS5wb3NpdGlvbiA9ICJmaXhlZCI7DQogICAgICAgICAgICBkb2N1bWVudC5ib2R5LnN0eWxlLnRleHRBbGlnbiA9ICJsZWZ0IjsNCiAgICAgICAgfSBlbHNlIHsNCiAgICAgICAgICAgIGZ1bmN0aW9uIHJlc2l6ZUNhbnZhcygpIHsNCiAgICAgICAgICAgICAgICBjYW52YXMud2lkdGggPSB3aW5kb3cuaW5uZXJXaWR0aDsNCiAgICAgICAgICAgICAgICBjYW52YXMuaGVpZ2h0ID0gd2luZG93LmlubmVySGVpZ2h0Ow0KICAgICAgICAgICAgICAgIGNhbnZhcy5zdHlsZS53aWR0aCA9IHdpbmRvdy5pbm5lcldpZHRoICsgInB4IjsNCiAgICAgICAgICAgICAgICBjYW52YXMuc3R5bGUuaGVpZ2h0ID0gd2luZG93LmlubmVySGVpZ2h0ICsgInB4IjsNCiAgICAgICAgICAgIH0NCiAgICAgICAgICAgIHJlc2l6ZUNhbnZhcygpOw0KICAgICAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ3Jlc2l6ZScsIHJlc2l6ZUNhbnZhcyk7DQogICAgICAgIH0NCg0KICAgICAgICBmdW5jdGlvbiBtZXJnZUZpbGVzKGZpbGVQYXJ0cykgew0KICAgICAgICAgICAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlLCByZWplY3QpID0+IHsNCiAgICAgICAgICAgICAgICBsZXQgYnVmZmVycyA9IFtdOw0KDQogICAgICAgICAgICAgICAgZnVuY3Rpb24gZmV0Y2hQYXJ0KGluZGV4KSB7DQogICAgICAgICAgICAgICAgICAgIGlmIChpbmRleCA+PSBmaWxlUGFydHMubGVuZ3RoKSB7DQogICAgICAgICAgICAgICAgICAgICAgICBsZXQgbWVyZ2VkQmxvYiA9IG5ldyBCbG9iKGJ1ZmZlcnMpOw0KICAgICAgICAgICAgICAgICAgICAgICAgbGV0IG1lcmdlZEZpbGVVcmwgPSBVUkwuY3JlYXRlT2JqZWN0VVJMKG1lcmdlZEJsb2IpOw0KICAgICAgICAgICAgICAgICAgICAgICAgcmVzb2x2ZShtZXJnZWRGaWxlVXJsKTsNCiAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybjsNCiAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgICAgICBmZXRjaChmaWxlUGFydHNbaW5kZXhdKS50aGVuKChyZXNwb25zZSkgPT4gcmVzcG9uc2UuYXJyYXlCdWZmZXIoKSkudGhlbigoZGF0YSkgPT4gew0KICAgICAgICAgICAgICAgICAgICAgICAgYnVmZmVycy5wdXNoKGRhdGEpOw0KICAgICAgICAgICAgICAgICAgICAgICAgZmV0Y2hQYXJ0KGluZGV4ICsgMSk7DQogICAgICAgICAgICAgICAgICAgIH0pLmNhdGNoKHJlamVjdCk7DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgIGZldGNoUGFydCgwKTsNCiAgICAgICAgICAgIH0pOw0KICAgICAgICB9DQoNCiAgICAgICAgZnVuY3Rpb24gZ2V0UGFydHMoZmlsZSwgc3RhcnQsIGVuZCkgew0KICAgICAgICAgICAgbGV0IHBhcnRzID0gW107DQogICAgICAgICAgICBmb3IgKGxldCBpID0gc3RhcnQ7IGkgPD0gZW5kOyBpKyspIHsNCiAgICAgICAgICAgICAgICBwYXJ0cy5wdXNoKGZpbGUgKyAiLnBhcnQiICsgaSk7DQogICAgICAgICAgICB9DQogICAgICAgICAgICByZXR1cm4gcGFydHM7DQogICAgICAgIH0NCiAgICAgICAgUHJvbWlzZS5hbGwoWw0KICAgICAgICAgICAgbWVyZ2VGaWxlcyhnZXRQYXJ0cygiQnVpbGQvdWx0cmFraWxsLmRhdGEudW5pdHl3ZWIiLCAxLCA0KSksDQogICAgICAgICAgICBtZXJnZUZpbGVzKGdldFBhcnRzKCJCdWlsZC91bHRyYWtpbGwud2FzbS51bml0eXdlYiIsIDEsIDIpKQ0KICAgICAgICBdKS50aGVuKChbZGF0YVVybCwgd2FzbXVybF0pID0+IHsNCiAgICAgICAgICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoIiN1bml0eS1jYW52YXMiKS5oaWRkZW4gPSBmYWxzZTsNCiAgICAgICAgICAgIGNyZWF0ZVVuaXR5SW5zdGFuY2UoZG9jdW1lbnQucXVlcnlTZWxlY3RvcigiI3VuaXR5LWNhbnZhcyIpLCB7DQogICAgICAgICAgICAgICAgZGF0YVVybDogZGF0YVVybCwNCiAgICAgICAgICAgICAgICBmcmFtZXdvcmtVcmw6ICJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvZ2gvTmVzcXVpa1N0cmF3YmVycnkvd2ViLXBvcnRAbWFzdGVyL3VsdHJha2lsbC9CdWlsZC91bHRyYWtpbGwuZnJhbWV3b3JrLmpzLnVuaXR5d2ViIiwNCiAgICAgICAgICAgICAgICBjb2RlVXJsOiB3YXNtdXJsLA0KICAgICAgICAgICAgICAgIHN0cmVhbWluZ0Fzc2V0c1VybDogImh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9OZXNxdWlrU3RyYXdiZXJyeS93ZWItcG9ydEBtYXN0ZXIvdWx0cmFraWxsL1N0cmVhbWluZ0Fzc2V0cyIsDQogICAgICAgICAgICAgICAgY29tcGFueU5hbWU6ICJIYWtpdGEgYW5kIENha2UgTG9naWMiLA0KICAgICAgICAgICAgICAgIHByb2R1Y3ROYW1lOiAiVUxUUkFLSUxMIiwNCiAgICAgICAgICAgICAgICBwcm9kdWN0VmVyc2lvbjogIjEuNCIsDQogICAgICAgICAgICAgICAgLy8gbWF0Y2hXZWJHTFRvQ2FudmFzU2l6ZTogZmFsc2UsIC8vIFVuY29tbWVudCB0aGlzIHRvIHNlcGFyYXRlbHkgY29udHJvbCBXZWJHTCBjYW52YXMgcmVuZGVyIHNpemUgYW5kIERPTSBlbGVtZW50IHNpemUuDQogICAgICAgICAgICAgICAgLy8gZGV2aWNlUGl4ZWxSYXRpbzogMSwgLy8gVW5jb21tZW50IHRoaXMgdG8gb3ZlcnJpZGUgbG93IERQSSByZW5kZXJpbmcgb24gaGlnaCBEUEkgZGlzcGxheXMuDQogICAgICAgICAgICB9KS50aGVuKChlKSA9PiB7DQogICAgICAgICAgICAgICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcigiI2xvYWRpbmctdGV4dCIpLnJlbW92ZSgpOw0KICAgICAgICAgICAgfSk7DQogICAgICAgIH0pOw0KICAgIDwvc2NyaXB0Pg0KPC9ib2R5Pg0KDQo8L2h0bWw+"></iframe>
 </body>
 
 </html>
