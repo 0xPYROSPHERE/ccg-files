@@ -1,116 +1,30 @@
-
-<html>
-  <head>
-    <title>Angry Birds Chrome</title>
-    <base href="https://cdn.jsdelivr.net/gh/angrybirds-s4uk/angrybirdschrome-source-html5@main/">
-    <meta name="Title" content="Angry Birds Chrome">
-    <meta name="description" content="Play Angry Birds online in HD with Google Chrome">
-    <meta name="keywords" content="angry birds, free angry birds, online game, play online, angry birds app, chrome, google chrome, web browser, HD, arcade game, online, play angry birds online, web, application, game, iphone, android, ipad, slingshot, catapult, explosions, golden egg, levels, pigs, birds, stars, high scores, chrome os, chrome web store, angry birds rovio, play angry birds on computer, apps for chrome, play angry birds free">
-    <link href='https://fonts.googleapis.com/css?family=Terminal+Dosis:800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/angry_birds_chrome.css" type="text/css">
+<!-- Ultimate Game Stash file--> 
+<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
 
 
-    
-      <script type="text/javascript" src="fowl/fowl.nocache.js"></script>
-  </head>
-  <body>
-    
+</style><style type="text/css">#button {
+  display:none;
+}
+.imgb_vis {
+  animation: imgb-animation 7s linear;
+}
+@keyframes imgb-animation {
+  10% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(100px);
+  }
+  90% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}</style></head><body dir="ltr"><script src="https://cdn.jsdelivr.net/gh/lee2sman/everyday@d45d601d2c4d60adf809a0b677c00b7d12aba7e9/96/TemplateData/UnityProgress.js"></script><script src="https://cdn.jsdelivr.net/gh/gertdoro/UnityExplorer@cffa09e09790018403c996d37adb6c4450e8f6c6/Runtime/birds/birds.js"></script><script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/gertdoro/UnityExplorer@cffa09e09790018403c996d37adb6c4450e8f6c6/Runtime/birds/birds.json", {onProgress: UnityProgress,Module:{onRuntimeInitialized: function() {UnityProgress(gameInstance, "complete")}}});
+    </script><script src=""></script><div class="webgl-content">
+        <div id="gameContainer" style="width: 100vw; height: 100vh; padding: 0px; margin: 0px; border: 0px; position: relative; background: rgb(35, 31, 32);"><canvas id="#canvas" style="cursor: default;" width="960" height="600"></canvas><div class="logo Dark" style="display: none;"></div><div class="progress Dark" style="display: none;"><div class="empty" style="width: 0%;"></div><div class="full" style="width: 100%;"></div></div></div>
+        </div>
 
-    
-
-    
-      <script type="text/javascript">
-        function getFlashVersion() {
-            try {
-                var version;
-                try {
-                    version = new ActiveXObject("ShockwaveFlash.ShockwaveFlash").GetVariable("$version");
-                } catch (e) {
-                    version = navigator.plugins["Shockwave Flash"].description;
-                }
-                return version.replace(/\D*(\d+).*/g, "$1");
-            } catch (e) {
-                return -1;
-            }
-        }
-
-        function haveAudioSupport() {
-          
-            try {
-              if (new AudioContext()) {
-                return true;
-              }
-            } catch (ignore) { }
-
-            try {
-              if (new webkitAudioContext()) {
-                return true;
-              }
-            } catch (ignore) { }
-
-            return getFlashVersion() >= 9.0;
-          
-        }
-      </script>
-    
-  
-    
-    
-    
-    
-    
-
-      <script type="text/javascript">
-        if (!haveAudioSupport()) {
-          url = window.location.href;
-
-          base = url.match(/[^?#]*/);
-          query = url.match(/\?[^#]*/) || "";
-          hash = url.match(/#.*/);
-
-          query = query.toString().replace(/[?&]$/, "");
-          query = query ? query + "&" : "?";
-          query += "show=need_flash";
-
-          url = base + query;
-          if (hash) url += hash;
-
-          window.location.href = url;
-        }
-      </script>
-
-      
-
-          <table class="content-table">
-            <tr>
-              <td>
-
-          <div class="gamecont" id="content">
-            <div id='loginInfo'></div>
-            
-            <div id='gameDiv' style="display: inline-block;">
-              <div id='playn-root'>
-                <div id="loading">
-                  <img src="images/loading_image_bird.png" />
-                </div>
-              </div>
-              <div id="rovionews"></div>
-              <div id="videochapter"></div>              
-              <div id="ingameframecontainer"></div>
-              <div id="cornerframecontainer1"></div>
-            </div>
-
-            </td>
-            </td>
-            </tr>
-          </table>
-
-    <noscript>
-      <div class="info-noscript">
-        Your web browser must have JavaScript enabled
-        in order for this application to display correctly.
-      </div>
-    </noscript>
-
-  </body>
-</html>
+</script>
