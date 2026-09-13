@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Three Goblets</title>
+    <base href="https://cdn.jsdelivr.net/gh/0xPYROSPHERE/3gob-ccg@df980886b6c584d7244ff09d2f5b4119d507812f/">
+    <style>
+      * { padding: 0; margin: 0}
+      canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #screenCanvas, body {
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="screenCanvas" width="640" height="576"></canvas>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script data-main="scripts/app" src="scripts/lib/require.js"></script>
+  </body>
+</html>
