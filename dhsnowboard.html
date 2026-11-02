@@ -23,6 +23,16 @@
     </style>
 </head>
 <body>
+  <script>
+    window.originalFetch = window.fetch;
+    window.fetch = function(url, ...args) {
+      if (url.includes("AGI.swf")) {
+        return window.originalFetch.call(this, "/gh/0xPYROSPHERE/coolchemgames@main/AGI.swf", ...args);
+      } else {
+        return window.originalFetch.call(this, url, ...args);
+      }
+    }
+  </script>
 <script>
   window.RufflePlayer = window.RufflePlayer || {};
   window.RufflePlayer.config = {
