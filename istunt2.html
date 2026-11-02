@@ -26,7 +26,7 @@
   <script>
   window.originalFetch = window.fetch;
   window.fetch = function(url, ...args) {
-    if (url.toString().includes("AGI.swf")) {
+    if (decodeURIComponent(url).includes("AGI.swf")) {
       return window.originalFetch.call(this, "/gh/0xPYROSPHERE/coolchemgames@main/AGI.swf", ...args);
     } else {
       return window.originalFetch.call(this, url, ...args);
