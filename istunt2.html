@@ -26,8 +26,8 @@
   <script>
   window.originalFetch = window.fetch;
   window.fetch = function(url, ...args) {
-    if (decodeURIComponent(url).includes("AGI.swf")) {
-      return window.originalFetch.call(this, "/gh/0xPYROSPHERE/coolchemgames@main/AGI.swf", ...args);
+    if (decodeURIComponent(url.url).includes("AGI.swf")) {
+      return window.originalFetch.call(this, new Request("https://cdn.jsdelivr.net/gh/0xPYROSPHERE/coolchemgames@main/AGI.swf", url), ...args);
     } else {
       return window.originalFetch.call(this, url, ...args);
     }
